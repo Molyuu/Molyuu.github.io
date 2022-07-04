@@ -1,148 +1,105 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Arch Linux Installation | Molyuu's Blog!</title><meta name="keywords" content="Arch Linux"><meta name="author" content="Molyuu"><meta name="copyright" content="Molyuu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Arch Linux 安装指南作者累了，不想写了！别看了！ 本文从 2022 年 3 月 25 日开始编写，随着时间的推移，部分内容可能需要修改。请注意辨别！  本文的目的是让一个没有任何 Linux 基础的小白照着这篇文章一台在一台已安装 Windows 的 UEFI 引导的 x86_64 的计算机上安装上 Arch Linux 和 Windows 双系统并使其处于基本可用的状态。所以，和 Ar">
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://fastly.jsdelivr.net'>
+  <link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Arch Linux Installation - Molyuu's Blog!</title>
+
+  
+    <meta name="description" content="Arch Linux 安装指南作者累了，不想写了！别看了！ 本文从 2022 年 3 月 25 日开始编写，随着时间的推移，部分内容可能需要修改。请注意辨别！  本文的目的是让一个没有任何 Linux 基础的小白照着这篇文章一台在一台已安装 Windows 的 UEFI 引导的 x86_64 的计算机上安装上 Arch Linux 和 Windows 双系统并使其处于基本可用的状态。所以，和 Ar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arch Linux Installation">
 <meta property="og:url" content="http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/index.html">
 <meta property="og:site_name" content="Molyuu&#39;s Blog!">
 <meta property="og:description" content="Arch Linux 安装指南作者累了，不想写了！别看了！ 本文从 2022 年 3 月 25 日开始编写，随着时间的推移，部分内容可能需要修改。请注意辨别！  本文的目的是让一个没有任何 Linux 基础的小白照着这篇文章一台在一台已安装 Windows 的 UEFI 引导的 x86_64 的计算机上安装上 Arch Linux 和 Windows 双系统并使其处于基本可用的状态。所以，和 Ar">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/sjtug_iso.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/sdu_ventoy.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/boot_1.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/boot_2.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/boot_3.jpg">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/boot_4.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/main_1.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/ch_font.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/ping.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/block.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/mount.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/mount_fin.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/nano_repo.png">
+<meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/nano_mirror.png">
 <meta property="article:published_time" content="2022-07-04T08:11:12.000Z">
 <meta property="article:modified_time" content="2022-07-04T08:15:02.492Z">
 <meta property="article:author" content="Molyuu">
 <meta property="article:tag" content="Arch Linux">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Arch Linux Installation',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2022-07-04 16:15:02'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/sjtug_iso.png">
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+
+  <!-- feed -->
+  
+
+  
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Molyuu's Blog!</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Arch Linux Installation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-04T08:11:12.000Z" title="发表于 2022-07-04 16:11:12">2022-07-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-04T08:15:02.492Z" title="更新于 2022-07-04 16:15:02">2022-07-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Arch Linux Installation"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Arch-Linux-安装指南"><a href="#Arch-Linux-安装指南" class="headerlink" title="Arch Linux 安装指南"></a>Arch Linux 安装指南</h1><h1 id="作者累了，不想写了！别看了！"><a href="#作者累了，不想写了！别看了！" class="headerlink" title="作者累了，不想写了！别看了！"></a>作者累了，不想写了！别看了！</h1><blockquote>
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main">Molyuu's Blog!</div><div class="sub cap">纵使千山多万壑，犹有青鸾踏云间</div></a></div>
+<nav class="menu dis-select"></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E9%9C%80%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">我需要做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%9B%E9%80%BC%EF%BC%8C%E5%BC%80%E6%95%B4%EF%BC%81"><span class="toc-text">牛逼，开整！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96-ISO"><span class="toc-text">获取 ISO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%BB%E5%BD%95%E8%BF%9B-U-%E7%9B%98"><span class="toc-text">刻录进 U 盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%AD%97%E4%BD%93"><span class="toc-text">改字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%BD%91"><span class="toc-text">联网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"><span class="toc-text">挂载分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-text">安装软件包</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-07-04T08:11:12.000Z">2022-07-04</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Arch Linux Installation</span></h1>
+<h1 id="Arch-Linux-安装指南"><a href="#Arch-Linux-安装指南" class="headerlink" title="Arch Linux 安装指南"></a>Arch Linux 安装指南</h1><h1 id="作者累了，不想写了！别看了！"><a href="#作者累了，不想写了！别看了！" class="headerlink" title="作者累了，不想写了！别看了！"></a>作者累了，不想写了！别看了！</h1><blockquote>
 <p>本文从 2022 年 3 月 25 日开始编写，随着时间的推移，部分内容可能需要修改。请注意辨别！</p>
 </blockquote>
 <p>本文的目的是让一个<strong>没有任何 Linux 基础的小白</strong>照着这篇文章一台在一台<strong>已安装 Windows 的 UEFI 引导的 x86_64 的计算机上安装上 Arch Linux 和 Windows 双系统并使其处于基本可用的状态</strong>。所以，和 Arch Wiki 的不同，本文追求<strong>让用户照着文档敲指令就能装好</strong>。所以，本文的语言会有些啰嗦，有经验的用户可以按照<strong>省流助手</strong>的提示进行操作</p>
@@ -177,13 +134,13 @@
 <p>首先，Arch Linux 的官方下载地址是在<a target="_blank" rel="noopener" href="https://archlinux.org/download/">这里</a>。你可以尝试通过这个链接下载。不过，由于地理位置的原因，速度极慢。</p>
 <p>所以，为了解决这一问题，人们提出了镜像站的概念——即，将某一个仓库作为上游，镜像站每隔一段时间将其同步至自己的服务器，使用户获得更好的使用体验。<br>我将使用<a target="_blank" rel="noopener" href="https://mirrors.sjtug.sjtu.edu.cn/">上海交通大学的镜像站</a>来进行演示。当然，你也可以选择别的镜像站，比如<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">清华 TUNA</a>或者<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/">中科大 USTC</a>。不过，我感觉上交大的镜像站体验最好，速度最快。</p>
 <p>所以，在浏览器中打开<a target="_blank" rel="noopener" href="https://mirrors.sjtug.sjtu.edu.cn/archlinux/iso/latest">下载地址</a>后，应该看到这样的画面：</p>
-<p><img src="/images/Arch-Linux-Installation/sjtug_iso.png" alt="sjtug_iso"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/sjtug_iso.png" alt="sjtug_iso"></p>
 <p>直接点击那个最大的 ISO,然后就开始下载了。</p>
 <blockquote>
 <p>课后习题（雾）：为什么我打开同样的链接，却看到了<code>archlinux-2022.04.01-x86_64.iso</code>或<code>archlinux-2022.05.01-x86_64.iso</code>呢？<br>如果无法找到答案，可以尝试搜索，或重新阅读本文章</p>
 </blockquote>
 <h2 id="刻录进-U-盘"><a href="#刻录进-U-盘" class="headerlink" title="刻录进 U 盘"></a>刻录进 U 盘</h2><p>刻录进 U 盘的方案有很多，此处推荐一个我最近使用的——<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">Ventoy</a>。此处使用<a target="_blank" rel="noopener" href="https://mirrors.sdu.edu.cn/">山东大学镜像站</a>来下载这一工具。</p>
-<p>在浏览器中打开<a target="_blank" rel="noopener" href="https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/">山东大学镜像站提供的下载链接</a>，你应该看到如下的画面：<br><img src="/images/Arch-Linux-Installation/sdu_ventoy.png" alt="你猜">点进去，然后找到 Windows 版的 zip,下载。下载好后，解压，按照提示，给你的 U 盘安装上<code>Ventoy</code>，这一步骤较为简单，不再赘述</p>
+<p>在浏览器中打开<a target="_blank" rel="noopener" href="https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/">山东大学镜像站提供的下载链接</a>，你应该看到如下的画面：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/sdu_ventoy.png" alt="你猜">点进去，然后找到 Windows 版的 zip,下载。下载好后，解压，按照提示，给你的 U 盘安装上<code>Ventoy</code>，这一步骤较为简单，不再赘述</p>
 <blockquote>
 <p>如果你这一步都完成不了的话，放弃吧，Linux 不适合你。</p>
 </blockquote>
@@ -196,20 +153,20 @@
 <p>你只需要分配一个分区用于存放整个系统便可以了（个人建议，大于 50G 就可以了！）</p>
 </blockquote>
 <p>我建议你在 Windows 上就做好这一工作。具体方法请自行搜索并按照自己的需求和实际情况操作。</p>
-<p>好了，差不多可以了！现在，关闭你的电脑吧！然后，再把它打开。在开机时，狂按你的电脑的开机启动项键。对于不同品牌的笔记本和台式机来说，开机启动项应该是：<br><img src="/images/Arch-Linux-Installation/boot_1.png" alt="boot_1"><br><img src="/images/Arch-Linux-Installation/boot_2.png" alt="boot_2"></p>
-<p>在狂按对应的按键之后，应该进入一个长这样的界面。<br><img src="/images/Arch-Linux-Installation/boot_3.jpg" alt="boot_3"><br>找到你的 U 盘，用键盘的方向键控制，然后按回车就行！</p>
-<p><img src="/images/Arch-Linux-Installation/boot_4.png" alt="boot_4"><br>然后你就会看到这么个东西。这个时候，用键盘上的方向键将光标移动到后面有<code>Copy to RAM</code>的这一行，然后按回车！<br>恭喜你！你现在已经进入 Arch Linux Live CD 了！<br>你的电脑会黑屏一段时间，然后出现一堆文字，这是正常的</p>
+<p>好了，差不多可以了！现在，关闭你的电脑吧！然后，再把它打开。在开机时，狂按你的电脑的开机启动项键。对于不同品牌的笔记本和台式机来说，开机启动项应该是：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/boot_1.png" alt="boot_1"><br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/boot_2.png" alt="boot_2"></p>
+<p>在狂按对应的按键之后，应该进入一个长这样的界面。<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/boot_3.jpg" alt="boot_3"><br>找到你的 U 盘，用键盘的方向键控制，然后按回车就行！</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/boot_4.png" alt="boot_4"><br>然后你就会看到这么个东西。这个时候，用键盘上的方向键将光标移动到后面有<code>Copy to RAM</code>的这一行，然后按回车！<br>恭喜你！你现在已经进入 Arch Linux Live CD 了！<br>你的电脑会黑屏一段时间，然后出现一堆文字，这是正常的</p>
 <blockquote>
 <p>如果你的电脑内存小于 4GB,请不要选择这个选项，直接选择默认的选项，按回车即可。另外，<br>如果你的电脑内存小于 4GB，建议把电脑丢了&#x3D; &#x3D;</p>
 </blockquote>
-<h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><p><img src="/images/Arch-Linux-Installation/main_1.png" alt="main_1"><br>等待一会之后，你应该看到这么一个大黑框。</p>
+<h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/main_1.png" alt="main_1"><br>等待一会之后，你应该看到这么一个大黑框。</p>
 <blockquote>
 <p>接下来，你会面对这个大黑框输几十行命令，如果你觉得很难，建议立刻关闭本教程，去安装 Manjaro&#x3D; &#x3D;</p>
 </blockquote>
 <h2 id="改字体"><a href="#改字体" class="headerlink" title="改字体"></a>改字体</h2><p>默认的字体又丑又小，不能忍！<br>输入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz</span><br></pre></td></tr></table></figure>
 
-<p>然后，爽！<br><img src="/images/Arch-Linux-Installation/ch_font.png" alt="font"></p>
+<p>然后，爽！<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/ch_font.png" alt="font"></p>
 <h2 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h2><p>如果你使用有线网络连接，那你应该不需要配置就能够正常使用。<br>如果你使用无线网卡（USB 接口的无线网卡不能用！），请使用<code>iwctl</code>来配置。<br>先输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwctl</span><br></pre></td></tr></table></figure>
 
@@ -220,13 +177,13 @@
 <p>我建议在输入<code>station</code>之后按<code>Tab</code>自动补全。另外，wifi 名称不可以是<strong>中文！</strong></p>
 </blockquote>
 <p>输入这行命令后，再输入<code>exit</code>，然后就应该又可以看到上文中的红色的终端了</p>
-<p>做完这步，可以通过<code>ping baidu.com</code>来测试是否连上了网。如果一切正常，输出应该像这样：<br><img src="/images/Arch-Linux-Installation/ping.png" alt="ping"><br>你可以<code>ctrl+c</code>强行停止。注意，对于任何 Linux 的进程来说，都可以用<code>ctrl+c</code>来强制停止。</p>
+<p>做完这步，可以通过<code>ping baidu.com</code>来测试是否连上了网。如果一切正常，输出应该像这样：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/ping.png" alt="ping"><br>你可以<code>ctrl+c</code>强行停止。注意，对于任何 Linux 的进程来说，都可以用<code>ctrl+c</code>来强制停止。</p>
 <h2 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h2><p>首先，你应该早在 Windows 上就分好了区。</p>
 <p>Linux 的文件结构和 Windows 上的文件结构是完全不一样的。在 Linux 当中，根目录（<code>/</code>），就是整个系统的放置的地点。所以，和 windows 不同，linux 下一切的文件和分区都可以看作文件夹和文件。这些<code>文件夹</code>，都需要挂载在根目录下。<br>比如说，<code>mnt</code>，他的完整路径就应该是<code>/mnt</code></p>
 <blockquote>
 <p>简单的例子，你有一个衣架，那么衣架就是根目录，你在衣架上挂了一件衣服，挂在了衣架的最上方，这件衣服就是硬盘的分区，挂载点就是<code>衣架上方</code>，衣服的路径应该是<code>衣架/上方</code></p>
 </blockquote>
-<p>首先，输入<code>lsblk</code>查看你的硬盘分区。在我的电脑上，我的硬盘分区大概长这样：<br><img src="/images/Arch-Linux-Installation/block.png" alt="block"><br>可以看到，我的电脑连接了三块硬盘，但是我们只需要<code>sda</code>这一块。</p>
+<p>首先，输入<code>lsblk</code>查看你的硬盘分区。在我的电脑上，我的硬盘分区大概长这样：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/block.png" alt="block"><br>可以看到，我的电脑连接了三块硬盘，但是我们只需要<code>sda</code>这一块。</p>
 <blockquote>
 <p>在你的电脑上，<code>sda</code>可能不叫<code>sda</code>，可能是<code>sdb</code>或者是<code>nvme0n1</code>，不用在意。你自己 happy 就行</p>
 </blockquote>
@@ -245,9 +202,9 @@
 <blockquote>
 <p>挂载硬盘的顺序不能乱！必须先挂载<code>/mnt</code>再挂载<code>/mnt/boot</code></p>
 </blockquote>
-<p>正确的输出应该如下：<br><img src="/images/Arch-Linux-Installation/mount.png" alt="mount"></p>
+<p>正确的输出应该如下：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/mount.png" alt="mount"></p>
 <p>完成这一切后，再次输入<code>lsblk</code>来查看磁盘各个分区的挂载点是否正常</p>
-<p><img src="/images/Arch-Linux-Installation/mount_fin.png" alt="mount_fin"><br>可以看到，现在在右侧的<code>mountpoints</code>一栏已经出现了<code>/mnt</code>和<code>/mnt/boot</code></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/mount_fin.png" alt="mount_fin"><br>可以看到，现在在右侧的<code>mountpoints</code>一栏已经出现了<code>/mnt</code>和<code>/mnt/boot</code></p>
 <p>Done!</p>
 <h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><p>在完成上述的操作之后，你就应该开始安装软件包了。首先，要介绍一个重要的概念<code>包管理器(Package Manager)</code>。<code>Linux</code>下，万物皆包。小到字体，图标，大到系统内核，都是以包的形式呈现的。<code>包管理器</code>可以帮助用户解决包的安装，卸载，管理等操作。各个<code>Linux发行版</code>的包管理器各不相同，包的后缀也不同。<code>Arch Linux</code>的包管理器叫<code>pacman</code>(同吃豆人游戏)。</p>
 <p>包管理器负责从<code>软件仓库</code>下载包，并对其进行安装，卸载等操作。不同的包之间存在依赖，冲突的关系，包管理器就负责对这些特殊情况进行处理。具体可以查看<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Wiki 对于 pacman 的介绍</a></p>
@@ -257,10 +214,187 @@
 <p>上述的命令中，我们将系统自行配置的软件源列表都删掉了。现在，我们可以开始自行配置了。<br>你需要使用一个<code>文本编辑器</code>来编辑配置文件。在这里，我推荐使用<code>nano</code>，因为其简洁，门槛低，并且，你现在可以直接使用。当然，你也可以尝试使用<code>vim</code>，如果你觉得你的智商足够高的话 ：）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
 
-<p>应该长这样:<br><img src="/images/Arch-Linux-Installation/nano_repo.png" alt="nano_repo"></p>
+<p>应该长这样:<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/nano_repo.png" alt="nano_repo"></p>
 <p>这里的 hello,就是你刚刚随便输入的东西，不用管他，删掉就可以了。然后，你需要写入:<code>Server=https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch</code></p>
 <blockquote>
 <p>在这里，我选择了<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/">USTC 的镜像源</a></p>
 </blockquote>
-<p><img src="/images/Arch-Linux-Installation/nano_mirror.png" alt="nano_mirror"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://blog.molyuu.xyz">Molyuu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/">http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.molyuu.xyz" target="_blank">Molyuu's Blog!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Arch-Linux/">Arch Linux</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">用GitHub Pages和Hexo搭建免费的博客</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Molyuu</div><div class="author-info__description">Molyuu's Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Arch-Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97"><span class="toc-number">1.</span> <span class="toc-text">Arch Linux 安装指南</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E8%80%85%E7%B4%AF%E4%BA%86%EF%BC%8C%E4%B8%8D%E6%83%B3%E5%86%99%E4%BA%86%EF%BC%81%E5%88%AB%E7%9C%8B%E4%BA%86%EF%BC%81"><span class="toc-number">2.</span> <span class="toc-text">作者累了，不想写了！别看了！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Before-Installation"><span class="toc-number">3.</span> <span class="toc-text">Before Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E9%9C%80%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">我需要做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%9B%E9%80%BC%EF%BC%8C%E5%BC%80%E6%95%B4%EF%BC%81"><span class="toc-number">3.2.</span> <span class="toc-text">牛逼，开整！</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96-ISO"><span class="toc-number">4.1.</span> <span class="toc-text">获取 ISO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%BB%E5%BD%95%E8%BF%9B-U-%E7%9B%98"><span class="toc-number">4.2.</span> <span class="toc-text">刻录进 U 盘</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%AD%97%E4%BD%93"><span class="toc-number">5.1.</span> <span class="toc-text">改字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%BD%91"><span class="toc-number">5.2.</span> <span class="toc-text">联网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"><span class="toc-number">5.3.</span> <span class="toc-text">挂载分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">5.4.</span> <span class="toc-text">安装软件包</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/04/Arch-Linux-Installation/" title="Arch Linux Installation"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arch Linux Installation"/></a><div class="content"><a class="title" href="/2022/07/04/Arch-Linux-Installation/" title="Arch Linux Installation">Arch Linux Installation</a><time datetime="2022-07-04T08:11:12.000Z" title="发表于 2022-07-04 16:11:12">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/" title="用GitHub Pages和Hexo搭建免费的博客"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用GitHub Pages和Hexo搭建免费的博客"/></a><div class="content"><a class="title" href="/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/" title="用GitHub Pages和Hexo搭建免费的博客">用GitHub Pages和Hexo搭建免费的博客</a><time datetime="2022-07-01T00:37:27.000Z" title="发表于 2022-07-01 08:37:27">2022-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/01/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/07/01/hello-world/" title="Hello World">Hello World</a><time datetime="2022-06-30T23:04:42.753Z" title="发表于 2022-07-01 07:04:42">2022-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Molyuu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/Arch-Linux-Installation/nano_mirror.png" alt="nano_mirror"></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/">用GitHub Pages和Hexo搭建免费的博客<span class="note">较早</span></a><div class="line"></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://blog.molyuu.xyz/">@Molyuu</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.8.0" title="v1.8.0">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.8.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://fastly.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://fastly.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://fastly.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://fastly.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://fastly.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti/umd/heti.min.css","js":"https://unpkg.com/heti/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
