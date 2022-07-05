@@ -18,14 +18,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>用GitHub Pages和Hexo搭建免费的博客 - Molyuu's Blog!</title>
+  <title>用GitHub Pages和Hexo搭建免费的博客 - Molyuu的博客</title>
 
   
     <meta name="description" content="用 GitHub Pages 和 Hexo 搭了这个博客网站，遂写篇博客，供后人参考。  介绍GitHub Pages 可以让你把你的网站部署在 GitHub 的服务器上，不用花一分钱。只需要往你的 repo 里面放一个index.html就能轻松搞定啦！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用GitHub Pages和Hexo搭建免费的博客">
 <meta property="og:url" content="http://blog.molyuu.xyz/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/index.html">
-<meta property="og:site_name" content="Molyuu&#39;s Blog!">
+<meta property="og:site_name" content="Molyuu的博客">
 <meta property="og:description" content="用 GitHub Pages 和 Hexo 搭了这个博客网站，遂写篇博客，供后人参考。  介绍GitHub Pages 可以让你把你的网站部署在 GitHub 的服务器上，不用花一分钱。只需要往你的 repo 里面放一个index.html就能轻松搞定啦！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-01T00:37:27.000Z">
@@ -63,8 +63,8 @@
 
 <header class="header">
 
-<div class="logo-wrap"><a class="title" href="/"><div class="main">Molyuu's Blog!</div><div class="sub cap">纵使千山多万壑，犹有青鸾踏云间</div></a></div>
-<nav class="menu dis-select"></nav></header>
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/102394810" onerror="javascript:this.classList.add('error');this.src='https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Molyuu的博客</div><div class="sub cap">纵使千山多万壑，犹有青鸾踏云间</div></a></div>
+<nav class="menu dis-select"><a class="nav-item" href="/">blog</a><a class="nav-item" target="_blank" rel="noopener" href="https://github.com/molyuu/">GitHub Account</a></nav></header>
 
 <div class="widgets">
 
@@ -101,6 +101,20 @@
 
 
 
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="molyuu/blog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
 
 
 
@@ -257,6 +271,34 @@
 
 
 <!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
 
 
 

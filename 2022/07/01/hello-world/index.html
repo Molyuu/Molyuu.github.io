@@ -18,14 +18,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>Hello World - Molyuu's Blog!</title>
+  <title>Hello World - Molyuu的博客</title>
 
   
     <meta name="description" content="这是这个博客网站的第一篇博客，也是我人生中的第一篇博客。关于创建这个博客，首先是希望以后能和不懂 CS 的人装逼；其次也希望能写些折腾的经历，能供后人参考。Clowwindy 曾经说：  我一直想象的那种大家一起来维护一个项目的景象始终没有出现，也没有出现的迹象。维护这个项目的过程中，遇到 @chenshaoju 这样主动分享的同学并不多。很多来汇报问题的人是以一种小白求大大解决问题，解决完就走人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
 <meta property="og:url" content="http://blog.molyuu.xyz/2022/07/01/hello-world/index.html">
-<meta property="og:site_name" content="Molyuu&#39;s Blog!">
+<meta property="og:site_name" content="Molyuu的博客">
 <meta property="og:description" content="这是这个博客网站的第一篇博客，也是我人生中的第一篇博客。关于创建这个博客，首先是希望以后能和不懂 CS 的人装逼；其次也希望能写些折腾的经历，能供后人参考。Clowwindy 曾经说：  我一直想象的那种大家一起来维护一个项目的景象始终没有出现，也没有出现的迹象。维护这个项目的过程中，遇到 @chenshaoju 这样主动分享的同学并不多。很多来汇报问题的人是以一种小白求大大解决问题，解决完就走人">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-30T23:04:42.753Z">
@@ -62,8 +62,8 @@
 
 <header class="header">
 
-<div class="logo-wrap"><a class="title" href="/"><div class="main">Molyuu's Blog!</div><div class="sub cap">纵使千山多万壑，犹有青鸾踏云间</div></a></div>
-<nav class="menu dis-select"></nav></header>
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/102394810" onerror="javascript:this.classList.add('error');this.src='https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Molyuu的博客</div><div class="sub cap">纵使千山多万壑，犹有青鸾踏云间</div></a></div>
+<nav class="menu dis-select"><a class="nav-item" href="/">blog</a><a class="nav-item" target="_blank" rel="noopener" href="https://github.com/molyuu/">GitHub Account</a></nav></header>
 
 <div class="widgets">
 
@@ -103,6 +103,20 @@
 
 
 
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="molyuu/blog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
 
 
 
@@ -259,6 +273,34 @@
 
 
 <!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
 
 
 
