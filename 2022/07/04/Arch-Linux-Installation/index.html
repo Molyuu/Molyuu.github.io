@@ -16,12 +16,12 @@
   <meta name="author" content="Molyuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="咕咕咕！咕咕咕？咕咕咕！">
+    <meta name="description" content="Arch Linux 双系统安装指南">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arch Linux Installation">
 <meta property="og:url" content="http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/index.html">
 <meta property="og:site_name" content="Molyuu Blog">
-<meta property="og:description" content="咕咕咕！咕咕咕？咕咕咕！">
+<meta property="og:description" content="Arch Linux 双系统安装指南">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/sjtug_iso.png">
 <meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/sdu_ventoy.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/nano_repo.png">
 <meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/nano_mirror.png">
 <meta property="article:published_time" content="2022-07-04T08:11:12.000Z">
-<meta property="article:modified_time" content="2022-07-06T07:31:51.080Z">
+<meta property="article:modified_time" content="2022-07-06T09:17:22.225Z">
 <meta property="article:author" content="Molyuu">
 <meta property="article:tag" content="Arch Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -84,7 +84,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.molyuu.xyz","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.molyuu.xyz","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":90,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -110,7 +110,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Molyuu Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -245,7 +245,7 @@
         
         
         
-          35 分钟
+          34 分钟
         
       </span>
     
@@ -288,10 +288,10 @@
             
               <div class="markdown-body">
                 
-                <p>咕咕咕！咕咕咕？咕咕咕！</p>
+                <p>Arch Linux 双系统安装指南</p>
 <span id="more"></span>
 
-<h1 id="Arch-Linux-安装指南"><a href="#Arch-Linux-安装指南" class="headerlink" title="Arch Linux 安装指南"></a>Arch Linux 安装指南</h1><h1 id="作者累了，不想写了！别看了！"><a href="#作者累了，不想写了！别看了！" class="headerlink" title="作者累了，不想写了！别看了！"></a>作者累了，不想写了！别看了！</h1><blockquote>
+<blockquote>
 <p>本文从 2022 年 3 月 25 日开始编写，随着时间的推移，部分内容可能需要修改。请注意辨别！</p>
 </blockquote>
 <p>本文的目的是让一个<strong>没有任何 Linux 基础的小白</strong>照着这篇文章一台在一台<strong>已安装 Windows 的 UEFI 引导的 x86_64 的计算机上安装上 Arch Linux 和 Windows 双系统并使其处于基本可用的状态</strong>。所以，和 Arch Wiki 的不同，本文追求<strong>让用户照着文档敲指令就能装好</strong>。所以，本文的语言会有些啰嗦，有经验的用户可以按照<strong>省流助手</strong>的提示进行操作</p>
@@ -478,12 +478,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2022/07/06/hello-world/" title="Hello World">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
