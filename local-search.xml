@@ -40,7 +40,7 @@
     <link href="/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/"/>
     <url>/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/</url>
     
-    <content type="html"><![CDATA[<p>用 GitHub Pages 和 Hexo 搭了这个博客网站，遂写篇博客，供后人参考。</p><span id="more"></span><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>GitHub Pages 可以让你把你的网站部署在 GitHub 的服务器上，不用花一分钱。只需要往你的 repo 里面放一个<code>index.html</code>就能轻松搞定啦！</p><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+    <content type="html"><![CDATA[<p>用 GitHub Pages 和 Hexo 搭了这个博客网站，遂写篇博客，供后人参考。</p><span id="more"></span><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>GitHub Pages 可以让你把你的网站部署在 GitHub 的服务器上，不用花一分钱。只需要往你的 repo 里面放一个<code>index.html</code>就能轻松搞定啦！</p>]]></content>
     
     
     
