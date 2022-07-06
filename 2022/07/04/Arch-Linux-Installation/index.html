@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/nano_repo.png">
 <meta property="og:image" content="http://blog.molyuu.xyz/images/Arch-Linux-Installation/nano_mirror.png">
 <meta property="article:published_time" content="2022-07-04T08:11:12.000Z">
-<meta property="article:modified_time" content="2022-07-05T10:35:17.000Z">
+<meta property="article:modified_time" content="2022-07-06T07:31:51.080Z">
 <meta property="article:author" content="Molyuu">
 <meta property="article:tag" content="Arch Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          undefined 字
+          4.1k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          NaN 分钟
+          35 分钟
         
       </span>
     
@@ -356,14 +356,14 @@
 <p>接下来，你会面对这个大黑框输几十行命令，如果你觉得很难，建议立刻关闭本教程，去安装 Manjaro&#x3D; &#x3D;</p>
 </blockquote>
 <h2 id="改字体"><a href="#改字体" class="headerlink" title="改字体"></a>改字体</h2><p>默认的字体又丑又小，不能忍！<br>输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz<br></code></pre></td></tr></table></figure>
 
 <p>然后，爽！<br><img src="/images/Arch-Linux-Installation/ch_font.png" srcset="/img/loading.gif" lazyload alt="font"></p>
 <h2 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h2><p>如果你使用有线网络连接，那你应该不需要配置就能够正常使用。<br>如果你使用无线网卡（USB 接口的无线网卡不能用！），请使用<code>iwctl</code>来配置。<br>先输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwctl</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">iwctl</span><br></code></pre></td></tr></table></figure>
 
 <p>然后会进入一个 iwd 的控制台<br>在这里，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">station wlan0 connect [你们家wifi名称]</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">station wlan0 connect 你们家wifi名称<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>我建议在输入<code>station</code>之后按<code>Tab</code>自动补全。另外，wifi 名称不可以是<strong>中文！</strong></p>
@@ -380,16 +380,16 @@
 <p>在你的电脑上，<code>sda</code>可能不叫<code>sda</code>，可能是<code>sdb</code>或者是<code>nvme0n1</code>，不用在意。你自己 happy 就行</p>
 </blockquote>
 <p>首先，先格式化你的分区为<code>ext4</code>格式。这是 Linux 下最流行的一个文件系统。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkfs.ext4 /dev/sda1<br></code></pre></td></tr></table></figure>
 
 <p>然后，挂载这个分区到&#x2F;mnt</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda1 /mnt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mount /dev/sda1 /mnt<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p><code>/dev/sda1</code>可以是你需要的分区。你可以通过<code>lsblk</code>并且通过查看分区大小来确定你需要安装在哪个分区上</p>
 </blockquote>
 <p>在挂载好&#x2F;mnt 分区后，你还需要挂载上 efi 分区。如果你已经装上了 windows 系统，那么 windows 会自动帮你分出一块 100MB 的 EFI 分区。你可以通过<code>lsblk</code>的结果来确定是哪一块。<br>假设这 EFI 分区是<code>/dev/sda2</code>,那么输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /mnt/boot</span><br><span class="line">mount /dev/sda2 /mnt/boot</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkdir <span class="hljs-regexp">/mnt/</span>boot<br>mount <span class="hljs-regexp">/dev/</span>sda2 <span class="hljs-regexp">/mnt/</span>boot<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>挂载硬盘的顺序不能乱！必须先挂载<code>/mnt</code>再挂载<code>/mnt/boot</code></p>
@@ -401,10 +401,10 @@
 <h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><p>在完成上述的操作之后，你就应该开始安装软件包了。首先，要介绍一个重要的概念<code>包管理器(Package Manager)</code>。<code>Linux</code>下，万物皆包。小到字体，图标，大到系统内核，都是以包的形式呈现的。<code>包管理器</code>可以帮助用户解决包的安装，卸载，管理等操作。各个<code>Linux发行版</code>的包管理器各不相同，包的后缀也不同。<code>Arch Linux</code>的包管理器叫<code>pacman</code>(同吃豆人游戏)。</p>
 <p>包管理器负责从<code>软件仓库</code>下载包，并对其进行安装，卸载等操作。不同的包之间存在依赖，冲突的关系，包管理器就负责对这些特殊情况进行处理。具体可以查看<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Wiki 对于 pacman 的介绍</a></p>
 <p>在上文中，我们提到——<code>包管理器从软件仓库下载包</code>，那么，软件仓库的列表被存储在系统中的某个配置文件当中。我们需要通过配置仓库的源的方式来获得更好的体验。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop reflector</span><br><span class="line"><span class="built_in">echo</span> 随便什么东西 &gt; /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop reflector<br><span class="hljs-built_in">echo</span> 随便什么东西 &gt; /etc/pacman.d/mirrorlist<br></code></pre></td></tr></table></figure>
 
 <p>上述的命令中，我们将系统自行配置的软件源列表都删掉了。现在，我们可以开始自行配置了。<br>你需要使用一个<code>文本编辑器</code>来编辑配置文件。在这里，我推荐使用<code>nano</code>，因为其简洁，门槛低，并且，你现在可以直接使用。当然，你也可以尝试使用<code>vim</code>，如果你觉得你的智商足够高的话 ：）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano /etc/pacman.d/mirrorlist<br></code></pre></td></tr></table></figure>
 
 <p>应该长这样:<br><img src="/images/Arch-Linux-Installation/nano_repo.png" srcset="/img/loading.gif" lazyload alt="nano_repo"></p>
 <p>这里的 hello,就是你刚刚随便输入的东西，不用管他，删掉就可以了。然后，你需要写入:<code>Server=https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch</code></p>
