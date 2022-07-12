@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Molyuu Blog</title>
+  
+  <subtitle>纵使千山多万壑，犹有青鸾踏云间</subtitle>
+  <link href="http://blog.molyuu.xyz/atom.xml" rel="self"/>
+  
+  <link href="http://blog.molyuu.xyz/"/>
+  <updated>2022-07-06T09:17:22.225Z</updated>
+  <id>http://blog.molyuu.xyz/</id>
+  
+  <author>
+    <name>Molyuu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arch Linux Installation</title>
+    <link href="http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/"/>
+    <id>http://blog.molyuu.xyz/2022/07/04/Arch-Linux-Installation/</id>
+    <published>2022-07-04T08:11:12.000Z</published>
+    <updated>2022-07-06T09:17:22.225Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Arch Linux 双系统安装指南&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Arch Linux" scheme="http://blog.molyuu.xyz/tags/Arch-Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用GitHub Pages和Hexo搭建免费的博客</title>
+    <link href="http://blog.molyuu.xyz/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/"/>
+    <id>http://blog.molyuu.xyz/2022/07/01/Use-GitHub-Pages-and-Hexo-to-deploy-your-blog-for-free/</id>
+    <published>2022-07-01T00:37:27.000Z</published>
+    <updated>2022-07-07T06:20:18.421Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;用 GitHub Pages 和 Hexo 搭了这个博客网站，遂写篇博客，供后人参考。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="GitHub Pages" scheme="http://blog.molyuu.xyz/tags/GitHub-Pages/"/>
+    
+    <category term="Hexo" scheme="http://blog.molyuu.xyz/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://blog.molyuu.xyz/2022/07/01/hello-world/"/>
+    <id>http://blog.molyuu.xyz/2022/07/01/hello-world/</id>
+    <published>2022-06-30T17:00:00.000Z</published>
+    <updated>2022-07-06T09:15:53.429Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Hello,New World!&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>
