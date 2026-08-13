@@ -6,15 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Molyuu's Redirect Page</title>
     <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: sans-serif;
             background-color: #f9f9f9;
+            margin: 0;
+            min-height: 100vh;
+            padding: 24px 16px;
+            overflow-x: hidden;
         }
 
         .container {
+            width: min(100%, 500px);
             max-width: 500px;
-            margin: 50px auto;
+            margin: 26px auto;
             padding: 20px;
+            text-align: center;
             border: 2px solid #8e44ad;
             /* Replace with the function below */
             border-radius: 10px;
@@ -31,6 +43,10 @@
         ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
         li {
@@ -38,6 +54,8 @@
         }
 
         a {
+            display: inline-block;
+            padding: 8px 12px;
             text-decoration: none;
             color: #8e44ad;
             font-weight: bold;
@@ -46,17 +64,31 @@
         a:hover {
             color: #6c3483;
         }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                margin: 12px auto;
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: clamp(1.5rem, 8vw, 2rem);
+                line-height: 1.2;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1> Molyuu's Redirect Page </h1>
-        <p>This is probably the most ugly stuff I could make.</p>
         <p> </p>
-        <p>Find me</p>
+        <p>Find me at:</p>
         <ul>
-            <a href="https://hub.winslow.cloud/@molyuu/" target="_blank">Mastodon</a>
             <a href="https://github.com/Molyuu" target="_blank">GitHub</a>
             <a href="mailto:mi@molyuu.cyou" target="_blank">E-Mail</a>
         </ul>
@@ -65,43 +97,29 @@
         <a href="https://blog.molyuu.cyou/" target="_blank">Blog</a>
     </div>
 
-    <!-- Frames for social media and website links -->
-    <iframe src="about:blank" name="socialFrame" style="display: none;"></iframe>
-    <iframe src="about:blank" name="websiteFrame" style="display: none;"></iframe>
-
     <script>
-        // Function to make your designer friend happy one happy
-        function redGreenSwitcherMakesYourDesignerFriendHappy(time) {
-            if (time % 2 == 0) {
-                return "#ff0000"
-            } else {
-                return "#2bff00"
-            }
+        const container = document.querySelector('.container');
+        const heading = document.querySelector('h1');
+        const colors = ['#ff0000', '#2bff00'];
+        let colorIndex = 0;
+
+        // Apply the initial color immediately.
+        function designerFriendHappy() {
+            const color = colors[colorIndex];
+            container.style.borderColor = color;
+            heading.style.color = color;
+            container.style.transform = `scale(${colorIndex === 0 ? 1.04 : 1})`;
         }
 
-        // Set random color for the container border and h1 text when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.querySelector('.container');
-            const h1 = document.querySelector('h1');
-            container.style.borderColor = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
-            h1.style.color = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
-        });
+        designerFriendHappy();
 
-        // Update color for container border and h1 text every second
-        setInterval(() => {
-            const container = document.querySelector('.container');
-            const h1 = document.querySelector('h1');
-            container.style.borderColor = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
-            h1.style.color = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
-        }, 100);
-
-        // Update background color for iframes every second
-        const socialFrame = document.querySelector("iframe[name='socialFrame']");
-        const websiteFrame = document.querySelector("iframe[name='websiteFrame']");
-        setInterval(() => {
-            socialFrame.style.backgroundColor = redGreenSwitcherMakesYourDesignerFriendHappy();
-            websiteFrame.style.backgroundColor = redGreenSwitcherMakesYourDesignerFriendHappy();
-        }, 100);
+        // Toggle a deterministic state every 150 ms. Using Date.now() here
+        // could select the same color twice when a timer fires slightly early
+        // or late, which made the animation look uneven.
+        window.setInterval(() => {
+            colorIndex = (colorIndex + 1) % colors.length;
+            designerFriendHappy();
+        }, 150);
     </script>
 </body>
 
