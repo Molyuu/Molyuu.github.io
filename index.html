@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Molyuu's Redirect Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #8e44ad;
+            /* Replace with the function below */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #55ad44;
+            /* Replace with the function below */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #8e44ad;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #6c3483;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1> Molyuu's Redirect Page </h1>
+        <p>This is probably the most ugly stuff I could make.</p>
+        <p> </p>
+        <p>Find me</p>
+        <ul>
+            <a href="https://hub.winslow.cloud/@molyuu/" target="_blank">Mastodon</a>
+            <a href="https://github.com/Molyuu" target="_blank">GitHub</a>
+            <a href="mailto:mi@molyuu.cyou" target="_blank">E-Mail</a>
+        </ul>
+        <p>Visit my websites:</p>
+        <a href="https://molyuu.cyou/" target="_blank">Homepage</a>
+        <a href="https://blog.molyuu.cyou/" target="_blank">Blog</a>
+    </div>
+
+    <!-- Frames for social media and website links -->
+    <iframe src="about:blank" name="socialFrame" style="display: none;"></iframe>
+    <iframe src="about:blank" name="websiteFrame" style="display: none;"></iframe>
+
+    <script>
+        // Function to make your designer friend happy one happy
+        function redGreenSwitcherMakesYourDesignerFriendHappy(time) {
+            if (time % 2 == 0) {
+                return "#ff0000"
+            } else {
+                return "#2bff00"
+            }
+        }
+
+        // Set random color for the container border and h1 text when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.container');
+            const h1 = document.querySelector('h1');
+            container.style.borderColor = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
+            h1.style.color = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
+        });
+
+        // Update color for container border and h1 text every second
+        setInterval(() => {
+            const container = document.querySelector('.container');
+            const h1 = document.querySelector('h1');
+            container.style.borderColor = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
+            h1.style.color = redGreenSwitcherMakesYourDesignerFriendHappy(Date.now());
+        }, 100);
+
+        // Update background color for iframes every second
+        const socialFrame = document.querySelector("iframe[name='socialFrame']");
+        const websiteFrame = document.querySelector("iframe[name='websiteFrame']");
+        setInterval(() => {
+            socialFrame.style.backgroundColor = redGreenSwitcherMakesYourDesignerFriendHappy();
+            websiteFrame.style.backgroundColor = redGreenSwitcherMakesYourDesignerFriendHappy();
+        }, 100);
+    </script>
+</body>
+
+</html>
